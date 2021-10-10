@@ -89,7 +89,8 @@ document.querySelectorAll('.close').forEach(elem => {
         
     //define email format
     const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        
+    /*const emailRegex =
+		/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;*/
     //define tournamentNbre format
     const tournamentNbreFormat = /\d+/g;
       
