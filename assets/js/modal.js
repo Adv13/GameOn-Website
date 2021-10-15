@@ -128,7 +128,7 @@ document.querySelectorAll('.close').forEach(elem => {
       counter++;
     }
     // check number of tournaments
-    if (tournamentNbreFormat.test(tournamentNbre.value)){
+    if (isNaN(tournamentNbre.value)){
       divTournament.setAttribute('data-error-visible', 'false');
       counter++;
     } else {

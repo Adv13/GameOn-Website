@@ -74,16 +74,20 @@ function editNav() {
     // input values dont accept blanks
     const firstNameValue = firstName.value.trim();
     const lastNameValue = lastName.value.trim();
+
+    let tableForm = ["firstName","lastName","email","birthDate","tournamentNbre",
+    "location","checkbox1"];
+
+    
         
     //define email format
-    const emailRegex =
-		/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     //define tournamentNbre format
     const tournamentNbreFormat = /\d+/g;      
 
-    // firstName fucntion
+    // firstName function
     function validateFirstName(){
-        if(firstNameValue.length <=1){
+        if(firstNameValue.length <2){
             divPrenom.setAttribute('data-error', 'Merci d\'écrire 2 caractères minimum.');
             divPrenom.setAttribute('data-error-visible', 'true');
         } else {
@@ -94,7 +98,7 @@ function editNav() {
 
     // lastName function
     function validateLastName(){
-        if(lastNameValue.length <=1){
+        if(lastNameValue.length <2){
         divNom.setAttribute('data-error', 'Merci d\'écrire 2 caractères minimum.');
         divNom.setAttribute('data-error-visible', 'true');
       } else {
@@ -105,7 +109,8 @@ function editNav() {
 
     // email function
     function validateEmail(){
-        if (emailRegex.test(email.value)){
+        var emailValue = tableForm.email[i];
+        if (emailRegex.test(emailValue)){
             divEmail.setAttribute('data-error-visible', 'false');
             return true;
           } else {
@@ -116,7 +121,8 @@ function editNav() {
     
     // birthdate function
     function validateBirthdate(){
-        if (birthDate.value ===""){
+        var birthDateValue = tableForm.birthDate[j];
+        if (birthDateValue ===""){
             divBirthdate.setAttribute('data-error', 'Merci de donner une date valide.');
             divBirthdate.setAttribute('data-error-visible', 'true');
           } else {
@@ -127,7 +133,8 @@ function editNav() {
 
     // function number of tournaments
     function validateTournamentNbre(){
-        if (tournamentNbreFormat.test(tournamentNbre.value)){
+        var tournamentNbreValue = tableForm.tournamentNbre[k];
+        if (tournamentNbreFormat.test(tournamentNbreValue)){
             divTournament.setAttribute('data-error-visible', 'false');
             return true;
         } else {
@@ -142,10 +149,9 @@ function editNav() {
         let radioValid = false;
         for (let i = 0; i<radios.length; i++) {
               
-          if(radios[i].checked) {
+          if(radios[l].checked) {
             radioValid = true;
-            divCheckboxLoc.setAttribute('data-error-visible', 'false');
-            return true;
+            divCheckboxLoc.setAttribute('data-error-visible', 'false');;
             break;
           } 
         } if(!radioValid) {
@@ -165,7 +171,7 @@ function editNav() {
         }
     }
 
-    let tableForm = ["firstName","lastName","email","birthDate","tournamentNbre","location","checkbox1"];
+
 
     document.querySelector('form').addEventListener('submit', e =>{
         e.preventDefault();
