@@ -105,7 +105,7 @@ function editNav() {
 
     // email function
     function validateEmail(){
-        if (mailFormat.test(email.value)){
+        if (emailRegex.test(email.value)){
             divEmail.setAttribute('data-error-visible', 'false');
             return true;
           } else {
@@ -170,6 +170,8 @@ function editNav() {
     document.querySelector('form').addEventListener('submit', e =>{
         e.preventDefault();
 
+    
+
     for(var i=0;i<tableForm.length;i++){
         // check firstname
         validateFirstName(firstName);
@@ -185,18 +187,32 @@ function editNav() {
         validateLocation(radios);
         // check checkbox usage conditions
         validateCheckbox1(checkbox1);
+    }
+   
+    // AJOUTER UNE CONFIRMATION QUAND L'ENVOIE DU FORMULAIRE EST REUSSI : ISSUE 4
+
+        const divBground = document.querySelector(".bground");
+        const divSuccess = document.querySelector("#divSuccess");
+        const closeSuccess = document.querySelector(".divCloseSuccess")
+        // close modal form
+        closeSuccess.addEventListener('click', successCrossClose);
+
+        function successCrossClose() {
+        divSuccess.style.display = "none";
+        }
+
+        const validate = () => {
+        document.querySelector(".subscribe").reset();
+        }
 
         if(validateFirstName === true && validateLastName === true
             && validateEmail === true && validateBirthdate === true
             && validateTournamentNbre === true && validateLocation === true
             && validateCheckbox1 === true){
-                alert("Demo only. No form was posted.");
+                divBground.style.display = "none";
+                divSuccess.style.display= "block";
+                validate();
             }
-
-
-        }
-
-
 
 
     })
