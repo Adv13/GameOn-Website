@@ -77,8 +77,6 @@ function editNav() {
 
     let tableForm = ["firstName","lastName","email","birthDate","tournamentNbre",
     "location","checkbox1"];
-
-    
         
     //define email format
     const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -109,8 +107,8 @@ function editNav() {
 
     // email function
     function validateEmail(){
-        var emailValue = tableForm.email[i];
-        if (emailRegex.test(emailValue)){
+        //var emailValue = tableForm.email[i];
+        if (emailRegex.test(tableForm.email)){
             divEmail.setAttribute('data-error-visible', 'false');
             return true;
           } else {
@@ -121,8 +119,8 @@ function editNav() {
     
     // birthdate function
     function validateBirthdate(){
-        var birthDateValue = tableForm.birthDate[j];
-        if (birthDateValue ===""){
+        //var birthDateValue = tableForm.birthDate[j];
+        if (tableForm.birthDate ===""){
             divBirthdate.setAttribute('data-error', 'Merci de donner une date valide.');
             divBirthdate.setAttribute('data-error-visible', 'true');
           } else {
@@ -133,8 +131,8 @@ function editNav() {
 
     // function number of tournaments
     function validateTournamentNbre(){
-        var tournamentNbreValue = tableForm.tournamentNbre[k];
-        if (tournamentNbreFormat.test(tournamentNbreValue)){
+        //var tournamentNbreValue = tableForm.tournamentNbre[k];
+        if (tournamentNbreFormat.test(tableForm.tournamentNbre)){
             divTournament.setAttribute('data-error-visible', 'false');
             return true;
         } else {
@@ -149,7 +147,7 @@ function editNav() {
         let radioValid = false;
         for (let i = 0; i<radios.length; i++) {
               
-          if(radios[l].checked) {
+          if(radios[i].checked) {
             radioValid = true;
             divCheckboxLoc.setAttribute('data-error-visible', 'false');;
             break;
