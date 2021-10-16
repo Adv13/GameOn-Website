@@ -131,8 +131,8 @@ function editNav() {
 
     // function number of tournaments
     function validateTournamentNbre(){
-        //var tournamentNbreValue = tableForm.tournamentNbre[k];
-        if (tournamentNbreFormat.test(tableForm.tournamentNbre)){
+        var tournamentNbreValue = tableForm.tournamentNbre;
+        if (tournamentNbreFormat.test(tournamentNbreValue)){
             divTournament.setAttribute('data-error-visible', 'false');
             return true;
         } else {
@@ -141,7 +141,6 @@ function editNav() {
         }
     }
     
-
     // function location
     function validateLocation(){
         let radioValid = false;
@@ -169,12 +168,8 @@ function editNav() {
         }
     }
 
-
-
     document.querySelector('form').addEventListener('submit', e =>{
         e.preventDefault();
-
-    
 
     for(var i=0;i<tableForm.length;i++){
         // check firstname
