@@ -90,8 +90,9 @@ function editNav() {
     //define tournamentNbre format
     const tournamentNbreFormat = /\d+/g; 
     
-    inputForm.addEventListener("change", validateFirstName, validateLastName,
-    validateEmail, validateBirthdate, validateTournamentNbre, validateLocation, validateCheckbox1);
+    inputForm.addEventListener("change", statHandle);
+    
+    function statHandle(){
     // firstName check
         if(firstNameValue.value <2){
             divPrenom.setAttribute('data-error', 'Merci d\'écrire 2 caractères minimum.');
@@ -150,7 +151,6 @@ function editNav() {
     // location check
         let radioValid = false;
         for (let i = 0; i<radios.length; i++) {
-              
           if(radios[i].checked) {
             radioValid = true;
             divCheckboxLoc.setAttribute('data-error-visible', 'false');
@@ -174,7 +174,8 @@ function editNav() {
             submitControl.disabled = false;
             counter++;
         }
-
+    }
+/*
     document.querySelector('form').addEventListener('submit', e =>{
         e.preventDefault();
    
@@ -204,4 +205,4 @@ function editNav() {
         }
 
 
-    })
+    })*/
