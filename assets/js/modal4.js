@@ -70,7 +70,14 @@ function editNav() {
     // terms of use
     const checkbox1 = document.querySelector("#checkbox1");
     const divCheckbox1 = document.querySelector('#divCheckbox1');
-    
+
+    // input form selection
+    let inputForm = document.querySelector(".inputForm");
+
+    // button submit selection
+    let submitControl = document.querySelector(".btn-submit");
+    submitControl.disabled = true;
+
     //add a counter to check each form input
     let counter = 0;
 
@@ -83,111 +90,95 @@ function editNav() {
     //define tournamentNbre format
     const tournamentNbreFormat = /\d+/g; 
     
-    // firstName function
-    function validateFirstName(){
+    inputForm.addEventListener("change", validateFirstName, validateLastName,
+    validateEmail, validateBirthdate, validateTournamentNbre, validateLocation, validateCheckbox1);
+    // firstName check
         if(firstNameValue.value <2){
             divPrenom.setAttribute('data-error', 'Merci d\'écrire 2 caractères minimum.');
             divPrenom.setAttribute('data-error-visible', 'true');
+            submitControl.disabled = true;
         } else {
             divPrenom.setAttribute('data-error-visible', 'false');
+            submitControl.disabled = false;
             counter++;
         }
-    }
 
-    // lastName function
-    function validateLastName(){
+    // lastName check
         if(lastNameValue.value <2){
         divNom.setAttribute('data-error', 'Merci d\'écrire 2 caractères minimum.');
         divNom.setAttribute('data-error-visible', 'true');
+        submitControl.disabled = true;
       } else {
         divNom.setAttribute('data-error-visible', 'false');
+        submitControl.disabled = false;
         counter++;
       }
-    }
 
-    // email function
-    function validateEmail(){
+    // email check
         if (emailRegex.test(email.value)){
             divEmail.setAttribute('data-error-visible', 'false');
+            submitControl.disabled = false;
             counter++;
           } else {
             divEmail.setAttribute('data-error', 'Merci d\'écrire une adresse email valide.');
             divEmail.setAttribute('data-error-visible', 'true');
+            submitControl.disabled = true;
           } 
-    }
     
-    // birthdate function
-    function validateBirthdate(){
+    // birthdate check
         if (birthDate ===""){
             divBirthdate.setAttribute('data-error', 'Merci de donner une date valide.');
             divBirthdate.setAttribute('data-error-visible', 'true');
+            submitControl.disabled = true;
           } else {
             divBirthdate.setAttribute('data-error-visible', 'false');
+            submitControl.disabled = false;
             counter++;
           }
-    }
 
-    // function number of tournaments
-    function validateTournamentNbre(){
+    // number of tournaments check
       if (tournamentNbreFormat.test(tournamentNbre.value)){
         divTournament.setAttribute('data-error-visible', 'false');
+        submitControl.disabled = false;
         counter++;
       } else {
         divTournament.setAttribute('data-error', 'Merci de donner un nombre entre 0 et 99.');
         divTournament.setAttribute('data-error-visible', 'true');
+        submitControl.disabled = true;
       }
-    }
     
-    // function location
-    function validateLocation(){
+    // location check
         let radioValid = false;
         for (let i = 0; i<radios.length; i++) {
               
           if(radios[i].checked) {
             radioValid = true;
             divCheckboxLoc.setAttribute('data-error-visible', 'false');
+            submitControl.disabled = false;
             counter++;
             break;
           } 
         } if(!radioValid) {
           divCheckboxLoc.setAttribute('data-error', 'Merci de choisir une ville.');
           divCheckboxLoc.setAttribute('data-error-visible', 'true');
+          submitControl.disabled = true;
         }
-    }
     
-    // function checkbox1 usage conditions
-    function validateCheckbox1(){
+    // checkbox1 usage conditions  check
         if(!checkbox1.checked) {
             divCheckbox1.setAttribute('data-error', 'Merci de lire et d\'accepter les conditions d\'utilisation.');
             divCheckbox1.setAttribute('data-error-visible', 'true');
+            submitControl.disabled = true;
         } else {
             divCheckbox1.setAttribute('data-error-visible', 'false');
+            submitControl.disabled = false;
             counter++;
         }
-    }
 
     document.querySelector('form').addEventListener('submit', e =>{
         e.preventDefault();
-
-        // check firstname
-        validateFirstName(firstName);
-        // check lastname
-        validateLastName(lastName);
-        // check email
-        validateEmail(email);
-        // check birthdate
-        validateBirthdate(birthDate);
-        // check tournament nomber
-        validateTournamentNbre(tournamentNbre);
-        // check location/city
-        validateLocation(radios);
-        // check checkbox usage conditions
-        validateCheckbox1(checkbox1);
    
     // AJOUTER UNE CONFIRMATION QUAND L'ENVOIE DU FORMULAIRE EST REUSSI : ISSUE 4
-
-        // Remove disabled btn-submit input
-        let submitControl = document.querySelector("btn-submit");
 
         const divBground = document.querySelector(".bground");
         const divSuccess = document.querySelector("#divSuccess");
@@ -207,7 +198,6 @@ function editNav() {
 
         // if all mandatory inputs are filled launch validate
         if(counter===7) {
-          submitControl.removeAttr("disabled");
           divBground.style.display = "none";
           divSuccess.style.display= "block";
           validate();

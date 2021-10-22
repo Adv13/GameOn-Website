@@ -69,9 +69,7 @@ document.querySelectorAll('.close').forEach(elem => {
     const divCheckboxLoc = document.querySelector('#divLocation');
     // terms of use
     const checkbox1 = document.querySelector("#checkbox1");
-    const divCheckbox1 = document.querySelector('#divCheckbox1');
-      
-      
+    const divCheckbox1 = document.querySelector('#divCheckbox1');  
       
   // Manage form submission
       
@@ -94,6 +92,9 @@ document.querySelectorAll('.close').forEach(elem => {
     //define tournamentNbre format
     const tournamentNbreFormat = /\d+/g;
       
+    // Remove disabled btn-submit input
+    var submitControl = document.getElementsByClassName("btn-submit");
+
     // AJOUTER MESSAGE DE VALIDATION OU D'ERREUR : ISSUE 3
     // check firstname
     if(firstNameValue.length <=1){
@@ -129,11 +130,11 @@ document.querySelectorAll('.close').forEach(elem => {
     }
     // check number of tournaments
     if (isNaN(tournamentNbre.value)){
-      divTournament.setAttribute('data-error-visible', 'false');
-      counter++;
-    } else {
       divTournament.setAttribute('data-error', 'Merci de donner un nombre entre 0 et 99.');
       divTournament.setAttribute('data-error-visible', 'true');
+    } else {
+      divTournament.setAttribute('data-error-visible', 'false');
+      counter++;
     }
     // check city 
     let radioValid = false;
@@ -177,7 +178,7 @@ document.querySelectorAll('.close').forEach(elem => {
     if(counter===7) {
       divBground.style.display = "none";
       divSuccess.style.display= "block";
-      validate()
+      validate();
     }
        
   })
