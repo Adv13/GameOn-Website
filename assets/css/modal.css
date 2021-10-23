@@ -209,6 +209,10 @@ input:not(:focus):invalid{
   border: 4px solid #e54858;
 }
 
+#btn-focus{
+  border:none;
+}
+
 .text-control {
   margin: 0;
   padding: 8px;

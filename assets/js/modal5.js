@@ -76,8 +76,8 @@ function editNav() {
     let inputForm = document.querySelector(".inputForm");
 
     // button submit selection
-    let submitControl = document.querySelector(".btn-submit");
-    submitControl.disabled = true;
+    // let submitControl = document.querySelector(".btn-submit");
+    // submitControl.disabled = true;
 
     //add a counter to check each form input
     let counter = 0;
@@ -103,32 +103,38 @@ function editNav() {
     }
 */
 
-
+inputForm.onchange = validateFirstName;
+inputForm.onchange = validateLastName;
+inputForm.onchange = validateEmail;
+inputForm.onchange = validateBirthdate;
+inputForm.onchange = validateTournamentNbre;
+inputForm.onchange = validateLocation;
+inputForm.onchange = validateCheckbox1;
 
     // firstName function
-    inputForm.addEventListener("change", function validateFirstName(){
-        if(firstName.length <2){
+    function validateFirstName(e){
+        if(firstNameValue.value <2){
             divPrenom.setAttribute('data-error', 'Merci d\'écrire 2 caractères minimum.');
             divPrenom.setAttribute('data-error-visible', 'true');
         } else {
             divPrenom.setAttribute('data-error-visible', 'false');
             counter++;
         }
-    });
+    }
 
     // lastName function
-    inputForm.addEventListener("change", function validateLastName(){
-        if(lastName.length <2){
+    function validateLastName(){
+        if(lastNameValue.value <2){
         divNom.setAttribute('data-error', 'Merci d\'écrire 2 caractères minimum.');
         divNom.setAttribute('data-error-visible', 'true');
       } else {
         divNom.setAttribute('data-error-visible', 'false');
         counter++;
       }
-    });
+    }
 
     // email function
-    inputForm.addEventListener("change", function validateEmail(){
+    function validateEmail(){
         if (emailRegex.test(email.value)){
             divEmail.setAttribute('data-error-visible', 'false');
             counter++;
@@ -136,10 +142,10 @@ function editNav() {
             divEmail.setAttribute('data-error', 'Merci d\'écrire une adresse email valide.');
             divEmail.setAttribute('data-error-visible', 'true');
           } 
-    });
+    }
     
     // birthdate function
-    inputForm.addEventListener("change", function validateBirthdate(){
+    function validateBirthdate(){
         if (birthDate ===""){
             divBirthdate.setAttribute('data-error', 'Merci de donner une date valide.');
             divBirthdate.setAttribute('data-error-visible', 'true');
@@ -147,10 +153,10 @@ function editNav() {
             divBirthdate.setAttribute('data-error-visible', 'false');
             counter++;
           }
-    });
+    }
 
     // function number of tournaments
-    inputForm.addEventListener("change", function validateTournamentNbre(){
+    function validateTournamentNbre(){
       if (tournamentNbreFormat.test(tournamentNbre.value)){
         divTournament.setAttribute('data-error-visible', 'false');
         counter++;
@@ -158,10 +164,10 @@ function editNav() {
         divTournament.setAttribute('data-error', 'Merci de donner un nombre entre 0 et 99.');
         divTournament.setAttribute('data-error-visible', 'true');
       }
-    });
+    }
     
     // function location
-    inputForm.addEventListener("change", function validateLocation(){
+    function validateLocation(){
         let radioValid = false;
         for (let i = 0; i<radios.length; i++) {
               
@@ -175,10 +181,10 @@ function editNav() {
           divCheckboxLoc.setAttribute('data-error', 'Merci de choisir une ville.');
           divCheckboxLoc.setAttribute('data-error-visible', 'true');
         }
-    });
+    }
     
     // function checkbox1 usage conditions
-    inputForm.addEventListener("change", function validateCheckbox1(){
+    function validateCheckbox1(){
         if(!checkbox1.checked) {
             divCheckbox1.setAttribute('data-error', 'Merci de lire et d\'accepter les conditions d\'utilisation.');
             divCheckbox1.setAttribute('data-error-visible', 'true');
@@ -186,9 +192,11 @@ function editNav() {
             divCheckbox1.setAttribute('data-error-visible', 'false');
             counter++;
         }
-    });
+    }
 
-    document.querySelector('form').addEventListener('submit', e =>{ e.preventDefault();
+    document.querySelector('form').addEventListener('submit', e =>{
+        e.preventDefault();
+   
     // AJOUTER UNE CONFIRMATION QUAND L'ENVOIE DU FORMULAIRE EST REUSSI : ISSUE 4
 
         const divBground = document.querySelector(".bground");
@@ -213,5 +221,6 @@ function editNav() {
           divSuccess.style.display= "block";
           validate();
         }
+
 
   })

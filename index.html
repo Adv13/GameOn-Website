@@ -61,8 +61,7 @@
               id="signup"
               name="reserve"
               action="index.html"
-              method="get"
-              onsubmit="return validate();"
+              method="POST"
               novalidate
             >
               <div
@@ -199,7 +198,7 @@
                   class="checkbox-input inputForm"
                   type="checkbox"
                   id="checkbox1"
-                  checked
+                  
                 />
                 <label class="checkbox2-label" for="checkbox1" required>
                   <span class="checkbox-icon"></span>
@@ -214,6 +213,7 @@
                 <br>
               </div>
               <input
+                id="btn-focus"
                 class="btn-submit"
                 type="submit"
                 class="button"
