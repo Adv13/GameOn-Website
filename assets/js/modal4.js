@@ -66,14 +66,33 @@ function editNav() {
     const tournamentNbre = document.querySelector('#quantity');
     const divTournament = document.querySelector('#divTournament');
     // cities
-    const radios = document.getElementsByName('location');
+    const radios = document.querySelector('.checkbox-input-location');
     const divCheckboxLoc = document.querySelector('#divLocation');
     // terms of use
     const checkbox1 = document.querySelector("#checkbox1");
     const divCheckbox1 = document.querySelector('#divCheckbox1');
 
-    // inputForm selection
-    let inputForm = document.querySelector(".inputForm");
+    // firstCheck selection
+    let firstCheck = document.querySelector("#first");
+
+    // lastCheck selection
+    let lastCheck = document.querySelector("#last");
+
+    // email selection
+    let emailCheck = document.querySelector("#email");
+
+    // birthdate selection
+    let birthdateCheck = document.querySelector("#birthdate");
+
+    //tournamentNbre selection
+    let tournamentNbreCheck = document.querySelector("#quantity");
+
+    //location selection
+    let locationCheck = document.querySelector('.checkbox-input-location');
+
+    //usage checkbox1 selection
+    let checkbox1Check = document.querySelector("#checkbox1");
+
 
     // button submit selection
     let submitControl = document.querySelector(".btn-submit");
@@ -106,21 +125,25 @@ function editNav() {
 
 
     // firstName function
-    inputForm.addEventListener("change", function validateFirstName(){
-        if(firstName.length <2){
+    firstCheck.addEventListener("change", validateFirstName);
+    
+    function validateFirstName(){
+        if(document.querySelector("#first").value.trim().length <2){
             divPrenom.setAttribute('data-error', 'Merci d\'écrire 2 caractères minimum.');
             divPrenom.setAttribute('data-error-visible', 'true');
+            submitControl.disabled = true;
         } else {
             divPrenom.setAttribute('data-error-visible', 'false');
             counter++;
         }
-    });
+    }
 
     // lastName function
-    inputForm.addEventListener("change", function validateLastName(){
-        if(lastName.length <2){
+    lastCheck.addEventListener("change", function validateLastName(){
+        if(document.querySelector("#last").value.trim().length <2){
         divNom.setAttribute('data-error', 'Merci d\'écrire 2 caractères minimum.');
         divNom.setAttribute('data-error-visible', 'true');
+        submitControl.disabled = true;
       } else {
         divNom.setAttribute('data-error-visible', 'false');
         counter++;
@@ -128,7 +151,7 @@ function editNav() {
     });
 
     // email function
-    inputForm.addEventListener("change", function validateEmail(){
+    emailCheck.addEventListener("change", function validateEmail(){
         if (emailRegex.test(email.value)){
             divEmail.setAttribute('data-error-visible', 'false');
             counter++;
@@ -139,18 +162,25 @@ function editNav() {
     });
     
     // birthdate function
-    inputForm.addEventListener("change", function validateBirthdate(){
+    birthdateCheck.addEventListener("change", function validateBirthdate(){
+      // pour la validation de la date selon si mineur ou majeur
+      const teenager = new Date(2003, 1, 01);
+      const dateNow = new Date(Date.now());
+      let checkBirthdate = new Date(birthDate.value);
         if (birthDate ===""){
             divBirthdate.setAttribute('data-error', 'Merci de donner une date valide.');
             divBirthdate.setAttribute('data-error-visible', 'true');
-          } else {
+        } else if(checkBirthdate > teenager && checkBirthdate <= dateNow){
+          divBirthdate.setAttribute('data-error', 'Il faut avoir plus de 18 ans pour participer.');
+          divBirthdate.setAttribute('data-error-visible', 'true');
+        } else {
             divBirthdate.setAttribute('data-error-visible', 'false');
             counter++;
-          }
+        }
     });
 
     // function number of tournaments
-    inputForm.addEventListener("change", function validateTournamentNbre(){
+    tournamentNbreCheck.addEventListener("change", function validateTournamentNbre(){
       if (tournamentNbreFormat.test(tournamentNbre.value)){
         divTournament.setAttribute('data-error-visible', 'false');
         counter++;
@@ -161,8 +191,7 @@ function editNav() {
     });
     
     // function location
-    inputForm.addEventListener("change", function validateLocation(){
-        let radioValid = false;
+        let radioValid = true;
         for (let i = 0; i<radios.length; i++) {
               
           if(radios[i].checked) {
@@ -175,10 +204,10 @@ function editNav() {
           divCheckboxLoc.setAttribute('data-error', 'Merci de choisir une ville.');
           divCheckboxLoc.setAttribute('data-error-visible', 'true');
         }
-    });
+ 
     
     // function checkbox1 usage conditions
-    inputForm.addEventListener("change", function validateCheckbox1(){
+    checkbox1Check.addEventListener("change", function validateCheckbox1(){
         if(!checkbox1.checked) {
             divCheckbox1.setAttribute('data-error', 'Merci de lire et d\'accepter les conditions d\'utilisation.');
             divCheckbox1.setAttribute('data-error-visible', 'true');
@@ -187,6 +216,10 @@ function editNav() {
             counter++;
         }
     });
+
+    if(counter===7) {
+      submitControl.disabled = false;
+    }
 
     document.querySelector('form').addEventListener('submit', e =>{ e.preventDefault();
     // AJOUTER UNE CONFIRMATION QUAND L'ENVOIE DU FORMULAIRE EST REUSSI : ISSUE 4
@@ -208,10 +241,11 @@ function editNav() {
         }
 
         // if all mandatory inputs are filled launch validate
-        if(counter===7) {
-          divBground.style.display = "none";
-          divSuccess.style.display= "block";
-          validate();
-        }
+        //if(counter===7) {
+          //submitControl.disabled = false;
+          //divBground.style.display = "none";
+          //divSuccess.style.display= "block";
+          //validate();
+        //}
 
   })
