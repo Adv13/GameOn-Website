@@ -88,7 +88,7 @@ function editNav() {
     let checkbox1Check = document.querySelector("#checkbox1");
     // button submit selection
     let submitControl = document.querySelector(".btn-submit");
-    submitControl.disabled = true;
+    //submitControl.disabled = true;
     //add a counter to check each form input
     let counter = 0;
         
@@ -164,7 +164,7 @@ function editNav() {
     
     // function location
             
-    locationCheck.addEventListener("change", validateCities);
+    /*locationCheck.addEventListener("change", validateCities);
           
     function validateCities(){
           let radioValid = false;
@@ -180,7 +180,7 @@ function editNav() {
           divCheckboxLoc.setAttribute('data-error-visible', 'true');
         }
       }
-    
+    */
     // function checkbox1 usage conditions
     checkbox1Check.addEventListener("change", function validateCheckbox1(){
         if(!checkbox1.checked) {
@@ -192,9 +192,35 @@ function editNav() {
         }
     });
 
-    if(counter===7) {
+    //let finalForm = document.querySelector("#signup");
+
+    //finalForm.addEventListener("change", function testFinal(){
+
+
+      function manage(txt) {
+        var bt = document.getElementById('btn-focus');
+        var ele = document.getElementsByTagName('input'); 
+
+        // Loop through each element.
+        for (i = 0; i < ele.length; i++) {
+
+            // Check the element type.
+            if (ele[i].type == 'text' && ele[i].value == '') {
+                bt.disabled = true;    // Disable the button.
+                return false;
+            }
+            else {
+                bt.disabled = false;   // Enable the button.
+            }
+        }
+      }
+    
+   /* if(!firstCheck == "" && !lastCheck == "" && !emailCheck == "" && !birthdateCheck == "" && !tournamentNbreCheck == "") {
       submitControl.disabled = false;
-    }
+    } else {
+      submitControl.disabled = true;
+    }*/
+
 
     document.querySelector('form').addEventListener('submit', e =>{ e.preventDefault();
     // AJOUTER UNE CONFIRMATION QUAND L'ENVOIE DU FORMULAIRE EST REUSSI : ISSUE 4

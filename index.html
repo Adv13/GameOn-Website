@@ -75,6 +75,8 @@
                   id="first"
                   name="first"
                   minlength="2"
+                  onkeyup="manage(this)"
+                  
                 /><br>
               </div>
               <div
@@ -88,6 +90,7 @@
                   id="last"
                   name="last"
                   minlength="2"
+                  onkeyup="manage(this)"
                 /><br>
               </div>
               <div
@@ -96,9 +99,10 @@
                 <label>E-mail *</label><br>
                 <input
                   class="text-control"
-                  type="email"
+                  type="text"
                   id="email"
                   name="email"
+                  onkeyup="manage(this)"
                   placeholder="Entrez une adresse email valide."
                 /><br>
               </div>
@@ -111,6 +115,7 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
+                  onkeyup="manage(this)"
                 /><br>
               </div>
               <div
@@ -129,6 +134,7 @@
                   id="location1"
                   name="location"
                   value="New York"
+                  onkeyup="manage(this)"
                   
                 />
                 <label class="checkbox-label" for="location1">
@@ -141,6 +147,7 @@
                   id="location2"
                   name="location"
                   value="San Francisco"
+                  onkeyup="manage(this)"
                 />
                 <label class="checkbox-label" for="location2">
                   <span class="checkbox-icon"></span>
@@ -152,6 +159,7 @@
                   id="location3"
                   name="location"
                   value="Seattle"
+                  onkeyup="manage(this)"
                 />
                 <label class="checkbox-label" for="location3">
                   <span class="checkbox-icon"></span>
@@ -163,6 +171,7 @@
                   id="location4"
                   name="location"
                   value="Chicago"
+                  onkeyup="manage(this)"
                 />
                 <label class="checkbox-label" for="location4">
                   <span class="checkbox-icon"></span>
@@ -174,6 +183,7 @@
                   id="location5"
                   name="location"
                   value="Boston"
+                  onkeyup="manage(this)"
                 />
                 <label class="checkbox-label" for="location5">
                   <span class="checkbox-icon"></span>
@@ -185,6 +195,7 @@
                   id="location6"
                   name="location"
                   value="Portland"
+                  onkeyup="manage(this)"
                 />
                 <label class="checkbox-label" for="location6">
                   <span class="checkbox-icon"></span>
@@ -199,6 +210,7 @@
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
+                  
                   
                 />
                 <label class="checkbox2-label" for="checkbox1" required>
@@ -219,7 +231,7 @@
                 type="submit"
                 class="button"
                 value="C'est parti"
-                
+                disabled
               />
             </form>
           </div>
