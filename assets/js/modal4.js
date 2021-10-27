@@ -93,7 +93,6 @@ function editNav() {
     //usage checkbox1 selection
     let checkbox1Check = document.querySelector("#checkbox1");
 
-
     // button submit selection
     let submitControl = document.querySelector(".btn-submit");
     submitControl.disabled = true;
@@ -109,24 +108,9 @@ function editNav() {
     const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     //define tournamentNbre format
     const tournamentNbreFormat = /^\d+$/; 
-       
-/*    
-    // avoid any empty field
-    inputForm.addEventListener("change", stateHandle);
-    function stateHandle() {
-        if (document.querySelector(".inputForm").value === "") {
-          submitControl.disabled = true; 
-        } else {
-          submitControl.disabled = false;
-        }
-    }
-*/
-
-
 
     // firstName function
     firstCheck.addEventListener("change", validateFirstName);
-    
     function validateFirstName(){
         if(document.querySelector("#first").value.trim().length <2){
             divPrenom.setAttribute('data-error', 'Merci d\'écrire 2 caractères minimum.');
@@ -236,16 +220,8 @@ function editNav() {
         }
 
         // reset form 
-        const validate = () => {
-        document.querySelector(".subscribe").reset();
-        }
-
-        // if all mandatory inputs are filled launch validate
-        //if(counter===7) {
-          //submitControl.disabled = false;
-          //divBground.style.display = "none";
-          //divSuccess.style.display= "block";
-          //validate();
-        //}
+        //document.querySelector(".subscribe").reset();
+        divBground.style.display = "none";
+        divSuccess.style.display= "block";
 
   })
