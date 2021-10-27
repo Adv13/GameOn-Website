@@ -51,10 +51,10 @@ function editNav() {
     // Retrieve nodes for validation
 
     // firstname
-    const firstName = document.querySelector('#first');
+    //const firstName = document.querySelector('#first');
     const divPrenom = document.querySelector('#divPrenom');
     // lastname
-    const lastName = document.querySelector('#last');
+    //const lastName = document.querySelector('#last');
     const divNom = document.querySelector('#divNom');
     // email
     const email = document.querySelector('#email');
@@ -74,35 +74,23 @@ function editNav() {
 
     // firstCheck selection
     let firstCheck = document.querySelector("#first");
-
     // lastCheck selection
     let lastCheck = document.querySelector("#last");
-
     // email selection
     let emailCheck = document.querySelector("#email");
-
     // birthdate selection
     let birthdateCheck = document.querySelector("#birthdate");
-
     //tournamentNbre selection
     let tournamentNbreCheck = document.querySelector("#quantity");
-
     //location selection
     let locationCheck = document.querySelector('.checkbox-input-location');
-
     //usage checkbox1 selection
     let checkbox1Check = document.querySelector("#checkbox1");
-
     // button submit selection
     let submitControl = document.querySelector(".btn-submit");
     submitControl.disabled = true;
-
     //add a counter to check each form input
     let counter = 0;
-
-    // input values dont accept blanks
-    const firstNameValue = firstName.value.trim();
-    const lastNameValue = lastName.value.trim();
         
     //define email format
     const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -176,7 +164,7 @@ function editNav() {
     
     // function location
             
-    radios.addEventListener("change", validateCities);
+    locationCheck.addEventListener("change", validateCities);
           
     function validateCities(){
           let radioValid = false;
@@ -188,7 +176,6 @@ function editNav() {
             break;
           } 
         } if(!radioValid) {
-          radioValid = false;
           divCheckboxLoc.setAttribute('data-error', 'Merci de choisir une ville.');
           divCheckboxLoc.setAttribute('data-error-visible', 'true');
         }
@@ -205,7 +192,7 @@ function editNav() {
         }
     });
 
-    if(counter>7) {
+    if(counter===7) {
       submitControl.disabled = false;
     }
 
@@ -215,6 +202,7 @@ function editNav() {
         const divBground = document.querySelector(".bground");
         const divSuccess = document.querySelector("#divSuccess");
         const closeSuccess = document.querySelector(".divCloseSuccess")
+        
         // close modal form
         closeSuccess.addEventListener('click', successCrossClose);
 
