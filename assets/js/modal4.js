@@ -175,9 +175,12 @@ function editNav() {
     });
     
     // function location
-        let radioValid = true;
-        for (let i = 0; i<radios.length; i++) {
-              
+            
+    radios.addEventListener("change", validateCities);
+          
+    function validateCities(){
+          let radioValid = false;
+          for (let i = 0; i<radios.length; i++) {
           if(radios[i].checked) {
             radioValid = true;
             divCheckboxLoc.setAttribute('data-error-visible', 'false');
@@ -185,10 +188,11 @@ function editNav() {
             break;
           } 
         } if(!radioValid) {
+          radioValid = false;
           divCheckboxLoc.setAttribute('data-error', 'Merci de choisir une ville.');
           divCheckboxLoc.setAttribute('data-error-visible', 'true');
         }
- 
+      }
     
     // function checkbox1 usage conditions
     checkbox1Check.addEventListener("change", function validateCheckbox1(){
@@ -201,7 +205,7 @@ function editNav() {
         }
     });
 
-    if(counter===7) {
+    if(counter>7) {
       submitControl.disabled = false;
     }
 
