@@ -215,6 +215,8 @@ function editNav() {
         }
       }
     
+
+      // test
    /* if(!firstCheck == "" && !lastCheck == "" && !emailCheck == "" && !birthdateCheck == "" && !tournamentNbreCheck == "") {
       submitControl.disabled = false;
     } else {
