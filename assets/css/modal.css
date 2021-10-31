@@ -347,11 +347,11 @@ input[data-error]::after {
   border: 0;
 }
 
-input:disabled{
+/*input:disabled{
   background: #cf9da3;
   color: rgb(241, 241, 241);
   cursor:default;
-}
+}*/
 
 /* Success modal */
 #divSuccess {

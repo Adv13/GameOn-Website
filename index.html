@@ -61,21 +61,22 @@
               id="signup"
               name="reserve"
               action="index.html"
-              method="POST"
+              method="get"
               novalidate
+              onsubmit="return validate(event);"
             >
               <div
                 id="divPrenom"
                 class="formData">
                 <label>Prénom *</label><br>
                 <input
-                  class="text-control"
+                  class="text-control validate"
                   type="text"
                   placeholder = "Entrez 2 caractères minimum."
                   id="first"
                   name="first"
                   minlength="2"
-                  onkeyup="manage(this)"
+                  
                   
                 /><br>
               </div>
@@ -84,13 +85,13 @@
                 class="formData">
                 <label>Nom *</label><br>
                 <input
-                  class="text-control"
+                  class="text-control validate"
                   type="text"
                   placeholder = "Entrez 2 caractères minimum."
                   id="last"
                   name="last"
                   minlength="2"
-                  onkeyup="manage(this)"
+                  
                 /><br>
               </div>
               <div
@@ -98,11 +99,11 @@
                 class="formData">
                 <label>E-mail *</label><br>
                 <input
-                  class="text-control"
-                  type="text"
+                  class="text-control validate"
+                  type="email"
                   id="email"
                   name="email"
-                  onkeyup="manage(this)"
+                  
                   placeholder="Entrez une adresse email valide."
                 /><br>
               </div>
@@ -111,11 +112,11 @@
                 class="formData">
                 <label>Date de naissance *</label><br>
                 <input
-                  class="text-control"
+                  class="text-control validate"
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                  onkeyup="manage(this)"
+                  
                 /><br>
               </div>
               <div
@@ -127,75 +128,73 @@
               <p class="text-label">Quelles villes ? *</p>
               <div
                 id="divLocation"
-                class="formData">
+                class="formData optionsCity">
                 <input
-                  class="checkbox-input checkbox-input-location"
-                  type="checkbox"
+                  class="checkbox-input checkbox-input-location validate"
+                  type="radio"
                   id="location1"
                   name="location"
                   value="New York"
-                  onkeyup="manage(this)"
-                  
                 />
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
                   New York</label
                 >
                 <input
-                  class="checkbox-input checkbox-input-location"
-                  type="checkbox"
+                  class="checkbox-input checkbox-input-location validate"
+                  type="radio"
                   id="location2"
                   name="location"
                   value="San Francisco"
-                  onkeyup="manage(this)"
+                  
                 />
                 <label class="checkbox-label" for="location2">
                   <span class="checkbox-icon"></span>
                   San Francisco</label
                 >
                 <input
-                  class="checkbox-input checkbox-input-location"
-                  type="checkbox"
+                  class="checkbox-input checkbox-input-location validate"
+                  type="radio"
                   id="location3"
                   name="location"
                   value="Seattle"
-                  onkeyup="manage(this)"
+                  
                 />
                 <label class="checkbox-label" for="location3">
                   <span class="checkbox-icon"></span>
                   Seattle</label
                 >
                 <input
-                  class="checkbox-input checkbox-input-location"
-                  type="checkbox"
+                  class="checkbox-input checkbox-input-location validate"
+                  type="radio"
                   id="location4"
                   name="location"
                   value="Chicago"
-                  onkeyup="manage(this)"
+                  
                 />
                 <label class="checkbox-label" for="location4">
                   <span class="checkbox-icon"></span>
                   Chicago</label
                 >
                 <input
-                  class="checkbox-input checkbox-input-location"
-                  type="checkbox"
+                  class="checkbox-input checkbox-input-location validate"
+                  type="radio"
                   id="location5"
                   name="location"
                   value="Boston"
-                  onkeyup="manage(this)"
+                  
                 />
                 <label class="checkbox-label" for="location5">
                   <span class="checkbox-icon"></span>
                   Boston</label
                 >
                 <input
-                  class="checkbox-input checkbox-input-location"
-                  type="checkbox"
+                  class="checkbox-input checkbox-input-location validate"
+                  type="radio"
                   id="location6"
                   name="location"
                   value="Portland"
-                  onkeyup="manage(this)"
+                  
                 />
                 <label class="checkbox-label" for="location6">
                   <span class="checkbox-icon"></span>
@@ -207,7 +206,7 @@
                 id="divCheckbox1"
                 class="formData">
                 <input
-                  class="checkbox-input"
+                  class="checkbox-input validate"
                   type="checkbox"
                   id="checkbox1"
                   
@@ -255,6 +254,6 @@
         Copyright 2014 - 2020, GameOn Inc.
       </p>
     </footer>
-    <script src="assets/js/modal4.js"></script>
+    <script src="assets/js/modal5.js"></script>
   </body>
 </html>
