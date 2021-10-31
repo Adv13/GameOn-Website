@@ -62,75 +62,71 @@
               name="reserve"
               action="index.html"
               method="get"
+              onsubmit="return validate();"
               novalidate
-              onsubmit="return validate(event);"
             >
+            <p class="modal-end">Merci d'avoir soumis les détails de votre inscription.<br> Votre candidature a bien été reçue !</p>
               <div
                 id="divPrenom"
-                class="formData">
+                class="formData first">
                 <label>Prénom *</label><br>
                 <input
-                  class="text-control validate"
+                  class="text-control"
                   type="text"
                   placeholder = "Entrez 2 caractères minimum."
                   id="first"
                   name="first"
                   minlength="2"
-                  
-                  
                 /><br>
               </div>
               <div
                 id="divNom"
-                class="formData">
+                class="formData last">
                 <label>Nom *</label><br>
                 <input
-                  class="text-control validate"
+                  class="text-control"
                   type="text"
                   placeholder = "Entrez 2 caractères minimum."
                   id="last"
                   name="last"
                   minlength="2"
-                  
                 /><br>
               </div>
               <div
                 id="divEmail"
-                class="formData">
+                class="formData email">
                 <label>E-mail *</label><br>
                 <input
-                  class="text-control validate"
+                  class="text-control"
                   type="email"
                   id="email"
                   name="email"
-                  
                   placeholder="Entrez une adresse email valide."
                 /><br>
               </div>
               <div
                 id="divBirthdate"
-                class="formData">
+                class="formData birthdate">
                 <label>Date de naissance *</label><br>
                 <input
                   class="text-control validate"
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                  
                 /><br>
               </div>
               <div
                 id="divTournament"
-                class="formData">
+                class="formData quantity">
                 <label>À combien de tournois GameOn avez-vous déjà participé ? *</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
-              <p class="text-label">Quelles villes ? *</p>
               <div
                 id="divLocation"
-                class="formData optionsCity">
+                class="formData cities">
+                <p class="text-label">Quelles villes ? *</p>
                 <input
-                  class="checkbox-input checkbox-input-location validate"
+                  class="checkbox-input"
                   type="radio"
                   id="location1"
                   name="location"
@@ -141,7 +137,7 @@
                   New York</label
                 >
                 <input
-                  class="checkbox-input checkbox-input-location validate"
+                  class="checkbox-input"
                   type="radio"
                   id="location2"
                   name="location"
@@ -153,7 +149,7 @@
                   San Francisco</label
                 >
                 <input
-                  class="checkbox-input checkbox-input-location validate"
+                  class="checkbox-input"
                   type="radio"
                   id="location3"
                   name="location"
@@ -165,7 +161,7 @@
                   Seattle</label
                 >
                 <input
-                  class="checkbox-input checkbox-input-location validate"
+                  class="checkbox-input"
                   type="radio"
                   id="location4"
                   name="location"
@@ -177,7 +173,7 @@
                   Chicago</label
                 >
                 <input
-                  class="checkbox-input checkbox-input-location validate"
+                  class="checkbox-input"
                   type="radio"
                   id="location5"
                   name="location"
@@ -189,7 +185,7 @@
                   Boston</label
                 >
                 <input
-                  class="checkbox-input checkbox-input-location validate"
+                  class="checkbox-input"
                   type="radio"
                   id="location6"
                   name="location"
@@ -204,13 +200,12 @@
 
               <div
                 id="divCheckbox1"
-                class="formData">
+                class="formData checkbox">
                 <input
                   class="checkbox-input validate"
                   type="checkbox"
                   id="checkbox1"
-                  
-                  
+                  checked
                 />
                 <label class="checkbox2-label" for="checkbox1" required>
                   <span class="checkbox-icon"></span>
@@ -230,7 +225,6 @@
                 type="submit"
                 class="button"
                 value="C'est parti"
-                disabled
               />
             </form>
           </div>
@@ -242,7 +236,7 @@
         <div class="content">
           <span class="close divCloseSuccess"></span>
           <div class="modal-body success--modalbody">
-            <p class="success-text">Votre candidature a bien été reçue !</p>
+            <p class="modal-end">Merci d'avoir soumis les détails de votre inscription.<br> Votre candidature a bien été reçue !</p>
           </div>
           
         </div>
@@ -254,6 +248,7 @@
         Copyright 2014 - 2020, GameOn Inc.
       </p>
     </footer>
-    <script src="assets/js/modal5.js"></script>
+    <script src="assets/js/modal7.js"></script>
+    <script src="assets/js/functions.js"></script>
   </body>
 </html>

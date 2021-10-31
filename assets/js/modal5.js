@@ -57,15 +57,12 @@ document.querySelectorAll('.close').forEach(elem => {
     const divNom = document.querySelector('#divNom');
     // email
     const emailCheck = document.querySelector("#email");
-    const email = document.querySelector('#email');
     const divEmail = document.querySelector('#divEmail');
     // birthdate 
     const birthdateCheck = document.querySelector("#birthdate");
-    const birthDate = document.querySelector('#birthdate');
     const divBirthdate = document.querySelector('#divBirthdate');
     // number of tournaments
     const tournamentNbreCheck = document.querySelector("#quantity");
-    const tournamentNbre = document.querySelector('#quantity');
     const divTournament = document.querySelector('#divTournament');
     // cities
     const locationCheck = document.querySelector('.checkbox-input-location');
@@ -85,10 +82,14 @@ document.querySelectorAll('.close').forEach(elem => {
 
   //define email format
   const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  let regexEmail =  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   //define tournamentNbre format
   const tournamentNbreFormat = /^\d+$/; 
   // limit of 2 caracters
-  const regexMin = /^.{2,35}$/;
+  let regexMin = /^.{2,35}$/;
+
+  const submitControl = document.querySelector(".btn-submit");
+  submitControl.disabled = true;
 
   let checkedCheckbox = false;
   
@@ -96,7 +97,7 @@ document.querySelectorAll('.close').forEach(elem => {
   // firstName function
   firstCheck.addEventListener("change", validateFirstName);
   function validateFirstName(){
-      if(document.querySelector("#first").value.trim().length <2){
+      if(firstCheck.value.trim().length <2){
           divPrenom.setAttribute('data-error', 'Merci d\'écrire 2 caractères minimum.');
           divPrenom.setAttribute('data-error-visible', 'true');    
       } else {
@@ -106,7 +107,7 @@ document.querySelectorAll('.close').forEach(elem => {
 
   // lastName function
   lastCheck.addEventListener("change", function validateLastName(){
-      if(document.querySelector("#last").value.trim().length <2){
+      if(lastCheck.value.trim().length <2){
       divNom.setAttribute('data-error', 'Merci d\'écrire 2 caractères minimum.');
       divNom.setAttribute('data-error-visible', 'true');
     } else {
@@ -116,7 +117,7 @@ document.querySelectorAll('.close').forEach(elem => {
 
   // email function
   emailCheck.addEventListener("change", function validateEmail(){
-      if (emailRegex.test(email.value)){
+      if (emailRegex.test(emailCheck.value)){
           divEmail.setAttribute('data-error-visible', 'false');
         } else {
           divEmail.setAttribute('data-error', 'Merci d\'écrire une adresse email valide.');
@@ -129,8 +130,8 @@ document.querySelectorAll('.close').forEach(elem => {
     // pour la validation de la date selon si mineur ou majeur
     const teenager = new Date(2003, 1, 01);
     const dateNow = new Date(Date.now());
-    let checkBirthdate = new Date(birthDate.value);
-      if (birthDate ===""){
+    let checkBirthdate = new Date(birthdateCheck.value);
+      if (birthdateCheck ===""){
           divBirthdate.setAttribute('data-error', 'Merci de donner une date valide.');
           divBirthdate.setAttribute('data-error-visible', 'true');
       } else if(checkBirthdate > teenager && checkBirthdate <= dateNow){
@@ -143,7 +144,7 @@ document.querySelectorAll('.close').forEach(elem => {
 
   // function number of tournaments
   tournamentNbreCheck.addEventListener("change", function validateTournamentNbre(){
-    if (tournamentNbreFormat.test(tournamentNbre.value)){
+    if (tournamentNbreFormat.test(tournamentNbreCheck.value)){
       divTournament.setAttribute('data-error-visible', 'false');
     } else {
       divTournament.setAttribute('data-error', 'Merci de donner un nombre entre 1 et 99.');
@@ -152,10 +153,16 @@ document.querySelectorAll('.close').forEach(elem => {
   });
 
   // function location  
-  checkbox.forEach(element =>{
+  checkbox.forEach(element => {
     element.addEventListener("change", function(){
-      divCheckboxLoc.setAttribute('data-error-visible', 'false');
-     })
+      if(element.checked){
+        checkedCheckbox = true;
+        divCheckboxLoc.setAttribute('data-error-visible', 'false');
+      } else {
+        divCheckboxLoc.setAttribute('data-error', 'Merci de choisir une ville.');
+        divCheckboxLoc.setAttribute('data-error-visible', 'true');
+      }
+    });
   });
     
   // function checkbox1 usage conditions
@@ -168,92 +175,14 @@ document.querySelectorAll('.close').forEach(elem => {
     }
   });
 
-
-  function validate(event) {
-    //vérifie si l'une des checkbox est checké ou pas
-    checkbox.forEach(element => {
-        if(element.checked){
-            checkedCheckbox = true
-        }
-  })
-
     //si toutes les conditions sont remplis je valide
-    if( regexMin.test(first.value) &&
-        regexMin.test(last.value) &&
-        regexEmail.test(email.value) &&
-        birthdate.value.substr(0, 4) > 1900 &&
-        birthdate.value !== "" &&
-        quantity.value !== "" &&
-        isNaN(quantity.value) == false &&
-        checkedCheckbox == true &&
-        checkbox1.checked == true
-        ){
-            event.preventDefault()
-            //suppression du formulaire
-            formulaire.style.display="none"
-
-            setTimeout(()=> {
-  // AJOUTER UNE CONFIRMATION QUAND L'ENVOIE DU FORMULAIRE EST REUSSI : ISSUE 4
-              const divBground = document.querySelector(".bground");
-              const divSuccess = document.querySelector("#divSuccess");
-              const closeSuccess = document.querySelector(".divCloseSuccess")
-        
-              // close modal form
-              closeSuccess.addEventListener('click', successCrossClose);
-
-              // close success modal with cross
-              function successCrossClose() {
-              divSuccess.style.display = "none";
-              } 
-
-              // reset form 
-              //document.querySelector(".subscribe").reset();
-              divBground.style.display = "none";
-              divSuccess.style.display= "block";
-              }, 500)
-
-              //reset le formulaire
-              form.reset()
-              textControl.forEach(element => {
-                element.classList.remove("success")
-              });
-
-            //Je remet les checkbox a false
-            checkedCheckbox = false
-    } else {
-        //si tout n'est pas rempli je mets les messages d'erreurs suivants :
-        event.preventDefault()
-        if(first.value == "") {
-          divPrenom.setAttribute('data-error', 'Merci d\'écrire 2 caractères minimum.');
-          divPrenom.setAttribute('data-error-visible', 'true');  
-        }
-        if(last.value == "") {
-          divNom.setAttribute('data-error', 'Merci d\'écrire 2 caractères minimum.');
-          divNom.setAttribute('data-error-visible', 'true');
-        }
-        if(email.value == "") {
-          divEmail.setAttribute('data-error', 'Merci d\'écrire une adresse email valide.');
-          divEmail.setAttribute('data-error-visible', 'true');
-        }
-        if(birthdate.value == "") {
-          divBirthdate.setAttribute('data-error', 'Merci de donner une date valide.');
-          divBirthdate.setAttribute('data-error-visible', 'true');
-        } 
-        if(quantity.value == "") {
-          divTournament.setAttribute('data-error', 'Merci de donner un nombre entre 1 et 99.');
-          divTournament.setAttribute('data-error-visible', 'true');
-        }
-        if(isNaN(quantity.value) == true) {
-          divTournament.setAttribute('data-error', "Vous devez saisir un nombre.");
-          divTournament.setAttribute('data-error-visible', 'true');
-        }
-        if(checkedCheckbox == false) {
-          divCheckboxLoc.setAttribute('data-error', 'Merci de choisir une ville.');
-          divCheckboxLoc.setAttribute('data-error-visible', 'true');
-        }
-        if(checkbox1.checked == false) {
-          divCheckbox1.setAttribute('data-error', 'Merci de lire et d\'accepter les conditions d\'utilisation.');
-          divCheckbox1.setAttribute('data-error-visible', 'true');
-        }
-    }
-}
+        if(firstCheck.value >2 &&
+          lastCheck.value >2 &&
+          regexEmail.test(emailCheck.value) &&
+          birthdateCheck !== "" &&
+          tournamentNbreCheck.value !== "" &&
+          isNaN(quantity.value) == false &&
+          checkedCheckbox == true &&
+          checkbox1.checked == true){
+            submitControl.disabled = false;
+          }

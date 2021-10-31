@@ -91,9 +91,6 @@ document.querySelectorAll('.close').forEach(elem => {
 		/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;*/
     //define tournamentNbre format
     const tournamentNbreFormat = /\d+/g;
-      
-    // Remove disabled btn-submit input
-    var submitControl = document.getElementsByClassName("btn-submit");
 
     // AJOUTER MESSAGE DE VALIDATION OU D'ERREUR : ISSUE 3
     // check firstname
