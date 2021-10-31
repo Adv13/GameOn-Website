@@ -59,6 +59,19 @@ function editNav() {
     modalbg.style.display = "none";
     document.querySelector(".subscribe").reset();
   }
+  
+  // close with 'Escape' key
+  function escapeModal(e) {
+    if (e.key === 'Escape' && modalbg.style.display === "block") {
+      closeModal();
+    }
+  }
+  document.addEventListener('keydown', escapeModal);
+  
+  //close with click button
+  document.querySelectorAll('.close').forEach(elem => {
+    elem.onclick = closeModal;
+  });
 
   //////////////////////////////////////////////////////////////////////////////
   

@@ -97,9 +97,9 @@ function isEmpty(input) {
   }
   
   function formEnd() {
-    btnSubmit.value = "Fermer";
-  
-    btnSubmit.addEventListener('click', closeModal);
+    btnSubmit.style.display = "none";
+    
+    //btnSubmit.addEventListener('click', closeModal);
     
     // delete content form 
     for(let i = 0; i < formData.length; i++) {
@@ -114,4 +114,5 @@ function isEmpty(input) {
     modalEnd.style.padding = `${formHeight / 2.5}px 0`;
   
     modalEnd.style.display = "block";
+
   }
