@@ -50,26 +50,26 @@ function editNav() {
   
   // launch modal form
   function launchModal() {
-    modalbg.style.display = "block";
-    formHeight = form.offsetHeight;
+    modalbg.style.display = "block"; // affiche le block contenant le form
+    formHeight = form.offsetHeight; // adapte la taille du block au form
   }
   
   // close modal form
   function closeModal(){
     modalbg.style.display = "none";
-    document.querySelector(".subscribe").reset();
+    document.querySelector(".subscribe").reset(); // reset les données écrites dans le form à la fermeture du block
   }
   
   // close with 'Escape' key
   function escapeModal(e) {
-    if (e.key === 'Escape' && modalbg.style.display === "block") {
+    if (e.key === 'Escape' && modalbg.style.display === "block") { // si key pressée est la touche espace, fermer le block
       closeModal();
     }
   }
-  document.addEventListener('keydown', escapeModal);
+  document.addEventListener('keydown', escapeModal); // si key pressée, lancée la function espaceModal
   
   //close with click button
-  document.querySelectorAll('.close').forEach(elem => {
+  document.querySelectorAll('.close').forEach(elem => { // si clic sur element contenant class ".close", fermer le block
     elem.onclick = closeModal;
   });
 
