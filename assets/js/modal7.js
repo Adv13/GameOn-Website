@@ -13,7 +13,8 @@ function editNav() {
   const modalbg = document.querySelector(".bground"); // sélectionne toute ce qui concerne la class bground dans une variable const
   const btnModalClose = document.querySelector(".close"); // sélectionne toute ce qui concerne la class close dans une variable const
   const modalBtn = document.querySelectorAll(".modal-btn"); // sélectionne toute ce qui concerne la class modal-btn dans une variable const
-  
+  const btnSignup = document.querySelector(".btn-signup"); // sélectionne toute ce qui concerne la class btn-signup
+
   //DOM Elements for form 
   const form = document.querySelector("form");// sélectionne toute ce qui concerne le form dans une variable const
   const firstName = document.querySelector("#first");//sélectionne l'ID first dans une variable const
@@ -49,6 +50,7 @@ function editNav() {
   
   // launch modal form
   function launchModal() {
+    document.querySelector(".subscribe").reset();
     modalbg.style.display = "block"; // affiche le block contenant le form
     formHeight = form.offsetHeight; // adapte la taille du block au form
   }
