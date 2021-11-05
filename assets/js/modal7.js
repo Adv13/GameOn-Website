@@ -1,9 +1,9 @@
-function editNav() {
-    let x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-      x.className += " responsive";
-    } else {
-      x.className = "topnav";
+function editNav() {//creation de la fucntion editNav
+    let x = document.getElementById("myTopnav");//sélectionne l'ID myTopnav dans une variable x
+    if (x.className === "topnav") { // si le nom de la class de x est strictement égal à topnav
+      x.className += " responsive"; // alors addition assignement de responsive à x
+    } else { // sinon
+      x.className = "topnav"; // x reste topnav
     }
   }
   
@@ -40,14 +40,12 @@ function editNav() {
   const modalEnd = document.querySelector(".modal-end");// sélectionne toute ce qui concerne la class modal-end dans une variable const
 
   ////////////////////////////////////////////////////////////////////////////
+  let formHeight = ''; // variable pour contenir taille du form
+
 
   // launch modal event
   modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-  
-  //close modal event
-  btnModalClose.addEventListener('click', closeModal);
-  let formHeight = '';
-  
+
   // launch modal form
   function launchModal() {
     modalbg.style.display = "block"; // affiche le block contenant le form
@@ -55,7 +53,7 @@ function editNav() {
   }
   
   // close modal form
-  function closeModal(){
+  function closeModal(){//function pour ne plus afficher le block 
     modalbg.style.display = "none";
   }
   
