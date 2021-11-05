@@ -50,7 +50,6 @@ function editNav() {
   
   // launch modal form
   function launchModal() {
-    document.querySelector(".subscribe").reset();
     modalbg.style.display = "block"; // affiche le block contenant le form
     formHeight = form.offsetHeight; // adapte la taille du block au form
   }
@@ -58,7 +57,6 @@ function editNav() {
   // close modal form
   function closeModal(){
     modalbg.style.display = "none";
-    document.querySelector(".subscribe").reset(); // reset les données écrites dans le form à la fermeture du block
   }
   
   // close with 'Escape' key
